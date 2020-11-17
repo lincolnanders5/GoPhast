@@ -7,7 +7,13 @@ backend pattern developed by Lincoln Anders.
 GoPhast uses common backend route patterns to remove the backend difficulty 
 common in rolling custom engines.
 
-### Static Assets
+The following path rules denote their GoPhast URL and destination:
+- `/` -> `./public/html/index.html`
+- `/landing` -> `./public/html/landing.html`
+- `/a/main_style.css` -> `./public/css/main_style.css`
+- `/api/request_stub` -> `localhost:4000/request_stub`
+
+## Static Assets
 Assets such as images and PDFs and front-end materials such as JavaScript and 
 CSS files are all pulled from the [public directory][config]. Assets will be 
 requested through URLs beginning with the `asset_route` value and found in
