@@ -1,0 +1,8 @@
+name: GoPhast Example
+port: 5000
+release: true
+public: ./here
+subsite: subsite
+asset_route: a
+api_route: api
+api_host: localhost:4000
