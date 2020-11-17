@@ -1,10 +1,10 @@
-# EasyServer
+# GoPhast
 A simple, customizable backend engine written in [Go][golang] by 
-[Lincoln Anders][LACOM]. EasyServer uses the [Gin Framework][gin] and a 
+[Lincoln Anders][LACOM]. GoPhast uses the [Gin Framework][gin] and a 
 backend pattern developed by Lincoln Anders.
 
 ## Route Patterns
-EasyServer uses common backend route patterns to remove the backend difficulty 
+GoPhast uses common backend route patterns to remove the backend difficulty 
 common in rolling custom engines.
 
 ### Static Assets
@@ -15,7 +15,7 @@ CSS files are all pulled from the [public directory][config].
 
 ## Subsites
 Subsites may be used when running multiple websites that share 
-[static assets][static-assets]. Multiple EasyServer instances may then access 
+[static assets][static-assets]. Multiple GoPhast instances may then access 
 the shared static assets while presenting different content through dedicated
 HTML pages in their subsite directory.
 
@@ -34,7 +34,7 @@ The following fields are valid in the `config.yml` file:
 | Field Name		| Default			| Purpose							|
 |-------------------|-------------------|-----------------------------------|
 | `name`			| (none)			| If used, displays the configured name for clarity.					|
-| `port`			| `4000`			| The port to run EasyServer from 										|
+| `port`			| `4000`			| The port to run GoPhast from 										|
 | `release`			| `false`			| Whether to suppress stdio logging or not 								|
 | `public`			| `./public`		| The [static asset directory][static-assets] to pull assets from 		|
 | `subsite`			| `(none)`			| If used, specifies which [subsite][subsites] directory to pull from 	|
