@@ -168,6 +168,30 @@ func main() {
 	yamlData.getConfigData()
 
 	// BEGIN: Config based on YAML data
+	InitConfigVars(&config, &yamlData)
+	// END
+
+	r := gin.New()
+	r.Use(gin.Logger())
+	r.Use(gin.Recovery()) // Default, send 500 on panic
+
+	r.GET("/", handlePages)
+	r.GET("/:part1", handlePages)
+	r.GET("/:part1/:part2", handlePages)
+	r.GET("/:part1/:part2/*part3", handlePages)
+
+	if config.IsAPI {
+		r.POST("/"+config.APIRoute+"/*part1", forwardAPIRequest)
+	}
+
+	// Listen and serve on 0.0.0.0:8080
+	// BEGIN: Dump config data
+	config.Dump()
+	// END
+	r.Run(":" + fmt.Sprintf("%d", config.Port))
+}
+
+func InitConfigVars(config *configT, yamlData *yamlT) {
 	if yamlData.Name != "" {
 		config.IsNamed = true
 		config.Name = yamlData.Name
@@ -208,23 +232,9 @@ func main() {
 		config.APIHost = yamlData.APIHost
 		config.IsAPI = true
 	}
-	// END
+}
 
-	r := gin.New()
-	r.Use(gin.Logger())
-	r.Use(gin.Recovery()) // Default, send 500 on panic
-
-	r.GET("/", handlePages)
-	r.GET("/:part1", handlePages)
-	r.GET("/:part1/:part2", handlePages)
-	r.GET("/:part1/:part2/*part3", handlePages)
-
-	if config.IsAPI {
-		r.POST("/"+config.APIRoute+"/*part1", forwardAPIRequest)
-	}
-
-	// Listen and serve on 0.0.0.0:8080
-	// BEGIN: Dump config data
+func (config *configT) Dump() {
 	if config.IsNamed {
 		log.Printf("Server: 			 %s", config.Name)
 	}
@@ -237,8 +247,7 @@ func main() {
 	log.Printf("Public Dir:			 %s", config.PublicDir)
 	if config.IsAPI {
 		log.Printf("API Path:			 /%s", config.APIRoute)
+		log.Printf("API Host:			 %s", config.APIHost)
 	}
-	log.Printf("Port:			 %d", config.Port)
-	// END
-	r.Run(":" + fmt.Sprintf("%d", config.Port))
+	log.Printf("GoPhast Port:		 %d", config.Port)
 }
