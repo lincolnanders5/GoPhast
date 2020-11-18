@@ -1,4 +1,4 @@
-module github.com/lincolnanders5/GoPhast
+module github.com/lincolnanders5/gophast
 
 go 1.15
 

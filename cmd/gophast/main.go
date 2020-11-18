@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/lincolnanders5/GoPhast/internal/gophast"
+	"github.com/lincolnanders5/gophast/internal/gophast"
 	"log"
 )
 

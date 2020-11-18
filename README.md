@@ -12,7 +12,7 @@ will run GoPhast in the current directory.
 To change the port to 5000 for example, run
 ```shell script
 $ echo "port: 5000" > config.yml
-$ go run github.com/lincolnanders5/GoPhast
+$ go run github.com/lincolnanders5/gophast
 ```
 
 ## Route Patterns
@@ -33,7 +33,7 @@ the public directory based on the folder named by the file extension. For
 example, the route `/a/main_style.css` will find the `main_style.css` file
 in the `./public/css` directory.
 
-Synonomous file types (such as `png`, `jpg`, `gif`) can be reduced to a single 
+Synonymous file types (such as `png`, `jpg`, `gif`) can be reduced to a single 
 directory with a representative name (e.g. the `img` directory). All assets
 will then properly be found in the `./public/img` directory when an asset such 
 as `/a/minesweeper.png` is requested.
@@ -93,7 +93,7 @@ This configuration will:
 ## Installing Globally
 To install GoPhast, run
 ```shell script
-$ go install github.com/lincolnanders5/GoPhast
+$ go install github.com/lincolnanders5/gophast
 ```
 *Note*: Install locations depend on your configuration. Check `go help install` to see
  where the GoPhast executable will be installed. 
@@ -110,10 +110,10 @@ export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/go/bin
 # Either...
 # - Run quickly, in place
-go run github.com/lincolnanders5/GoPhast/cmd/gophast
+go run github.com/lincolnanders5/gophast/cmd/gophast
 
 # - Compile to root level 
-go build github.com/lincolnanders5/GoPhast/cmd/gophast
+go build github.com/lincolnanders5/gophast/cmd/gophast
 ./gophast
 ```
 
