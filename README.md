@@ -3,6 +3,18 @@ A simple, customizable backend engine written in [Go][golang] by
 [Lincoln Anders][LACOM]. GoPhast uses the [Gin Framework][gin] and a 
 backend pattern developed by Lincoln Anders.
 
+## Quickly Run GoPhast
+To quickly run GoPhast, ensure [Go 1.15+][golang] is installed. You can check 
+that Go is installed by running `go version` in your terminal. You may then 
+install GoPhast by running `go run github.com/lincolnanders5/GoPhast`. This 
+will run GoPhast in the current directory.
+
+To change the port to 5000 for example, run
+```shell script
+$ echo "port: 5000" > config.yml
+$ go run github.com/lincolnanders5/GoPhast
+```
+
 ## Route Patterns
 GoPhast uses common backend route patterns to remove the backend difficulty 
 common in rolling custom engines.
@@ -47,6 +59,7 @@ must be configured in the `config.yml` file for API proxying to be enabled.
 
 ## Configuration
 The following fields are valid in the `config.yml` file:
+
 | Field Name		| Default			| Purpose							                                    |
 |-------------------|-------------------|-----------------------------------------------------------------------|
 | `name`			| (none)			| If used, displays the configured name for clarity.					|
@@ -76,6 +89,33 @@ This configuration will:
 1. Pull assets from the `./here` folder (relative to the current directory) 
    when a `/static/asset_name.asset_type` path is requested
 1. Proxy all requests to `/api/v1/...` through `localhost:4000/...`
+
+## Installing Globally
+To install GoPhast, run
+```shell script
+$ go install github.com/lincolnanders5/GoPhast
+```
+*Note*: Install locations depend on your configuration. Check `go help install` to see
+ where the GoPhast executable will be installed. 
+ 
+ You may need to update your `$PATH` environment variable to include the 
+ location of the GoPhast executable. For example, to include the `$HOME/go/bin`
+ directory, run (or add to your shell configuration file) 
+ ```
+export PATH=$PATH:$HOME/go/bin
+```
+
+## Running Locally
+```shell script
+export PATH=$PATH:$HOME/go/bin
+# Either...
+# - Run quickly, in place
+go run github.com/lincolnanders5/GoPhast/cmd/gophast
+
+# - Compile to root level 
+go build github.com/lincolnanders5/GoPhast/cmd/gophast
+./gophast
+```
 
 
 [api]: #api-proxying
