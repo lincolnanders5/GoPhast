@@ -20,15 +20,10 @@ func HandlePages(c *gin.Context) {
 	if Config.IsAPI && Config.APIHost != "" && part1 == Config.APIRoute {
 		log.Printf("Forwarding through handlePages router")
 		ForwardAPIRequest(c)
-	}
-
-	log.Printf("Config.AssetRoute: %s", Config.AssetRoute)
-	if part1 != Config.AssetRoute {
+	} else if part1 != Config.AssetRoute {
 		log.Printf("Sending landing page")
 		GetLandingPage(c)
-	}
-
-	if part1 == Config.AssetRoute && part2 != "" {
+	} else if part1 == Config.AssetRoute && part2 != "" {
 		log.Printf("Sending asset")
 		GetPublicAsset(c)
 	}
